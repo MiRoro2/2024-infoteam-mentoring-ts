@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import GetOrganizations from "src/api/logo";
 import OrganizationCard from "src/components/OrganizationCard";
 
@@ -28,6 +29,8 @@ const Main = () => {
     const data = await GetOrganizations({ name: inputValue });
     setData(data);
   };
+
+  const navigator = useNavigate();
 
   // when you use immediate get api call
   // useEffect(() => {
@@ -59,6 +62,8 @@ const Main = () => {
         ) : (
           data.map((item) => <OrganizationCard key={item.name} {...item} />)
         ))}
+
+      <Link to="/path"></Link>
     </div>
   );
 };
